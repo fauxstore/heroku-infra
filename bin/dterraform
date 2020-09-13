@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e -u
+
+# a simple wrapper around the dockerized terraform CLI, so that we 
+#  can replace `terraform foo` with `./bin/terraform foo` and not have to install the terraform CLI locally
+
+docker run \
+	-v "${HOME}/.aws":/root/.aws \
+	-v "${PWD}":/workplace \
+	-w /workplace/terraform \
+	-e HEROKU_API_KEY \
+	-e HEROKU_EMAIL \
+  -i -t hashicorp/terraform:light "$@"
