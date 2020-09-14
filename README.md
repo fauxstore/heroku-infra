@@ -12,6 +12,9 @@ export TF_BACKEND_DATABASE_URL=`heroku config:get DATABASE_URL --app 'fauxstore-
 
 ### apply terraform
 ```
+export HEROKU_EMAIL=____
+export HEROKU_API_KEY=____
+
 ./bin/dterraform plan
 ./bin/dterraform apply
 ```
